@@ -1,0 +1,24 @@
+
+name: TestTheme
+description: My Fist Costum Theme in drupal
+type: theme
+package: Custom
+core: 8.x
+project: drupal
+base theme: stable
+
+regions:
+  header : Header
+  primary_menu: Primary Menu
+  secondary_menu: Secondary Many
+  highlighted: Highlighted
+  help: Help
+  content : Content
+  sidebar_first: Primary Sidebar
+  sidebar_second: Secondary Sidebar
+  footer: Footer
+  breadcrumb: Breadcrumb
+
+libraries:
+  - TestTheme/global-css
+  - TestTheme/global-js

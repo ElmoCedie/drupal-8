@@ -1,0 +1,59 @@
+<header>
+
+  <div class="navbar navbar-default navbar-fixed-top">
+    <a href="/">
+      <img id="nav-logo" src="{{ base_path ~ 'themes/UnionBankTest/images/union-logo.png' }}"/>
+    </a>
+    <div class="nav navbar-nav navbar-custom navbar-right">
+      {{ page.primary_menu }}
+    </div>
+  </div>
+
+</header>
+
+{% if is_front %}
+  <div class="banner-container">
+    <img class="banner-image" src="{{ base_path ~ 'themes/UnionBankTest/images/debitpage-banner.jpg' }}"/>
+  </div>
+{% endif %}
+
+<div id="content_sub_menu">
+  {{ page.content_Navbar }}
+</div>
+
+<div class="container">
+  <main>
+    <div class="row" id="main-content">
+      <div class="col-lg-10">
+        <div class="container">
+
+          {{ page.content }}
+        </div>
+      </div>
+      {# <div class="col-sm-2">
+              {# {{ page.sidebar_second }} #}
+    </div>
+    #}
+  </div>
+</main>
+</div>
+
+<footer id="footer">
+<div class="content container">
+  <a href="/">
+    <img src="{{ base_path ~ 'themes/UnionBankTest/images/union-logo.png' }}"/>
+  </a>
+  <div class="row">
+    {{ page.footer }}
+  </div>
+  <div class="note">
+    <p>UnionBank of the Philippines is an entity regulated by the Bangko Sentral ng Pilipinas. For inquiries and comments, please contact our 24-Hour Customer Service at (+632) 841-8600 for Metro Manila; 1-800-1888-2277 for PLDT domestic toll-free calls;
+      and (IAC) + 800-8277-2273 for international toll-free calls, or send us an email at customer.service@unionbankph.com.
+    </p>
+    <p>
+      You may also contact the BSP-Financial Consumer Protection Department (FCPD) at (02) 708-7087 or consumeraffairs@bsp.gov.ph. UnionBank of the Philippines is located at UnionBank Plaza Meralco Ave cor. Onyx and Sapphire Rds, Ortigas Center, Pasig,
+      Philippines.
+    </p>
+  </div>
+</div>
+</footer>

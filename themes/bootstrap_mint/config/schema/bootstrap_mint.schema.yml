@@ -1,0 +1,5 @@
+# Schema for configuration files of the Bootstrap Mint theme.
+
+bootstrap_mint.settings:
+  type: theme_settings
+  label: 'Bootstrap Mint settings'

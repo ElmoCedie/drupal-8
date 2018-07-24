@@ -1,0 +1,17 @@
+{
+  "name": "drupal/bootstrap_mint",
+  "description": "A mobile-first Drupal 8 theme built on the Bootstrap 3 framework.",
+  "type": "drupal-theme",
+  "homepage": "https://www.drupal.org/sandbox/binu_varghese/2752631",
+  "authors": [
+    {
+      "name": "Binu Varghese",
+      "email": "myinbox.binu@gmail.com",
+      "homepage": "https://www.drupal.org/u/binu-varghese",
+      "role": "Maintainer"
+    }
+  ],
+  "license": "GPL-2.0+",
+  "minimum-stability": "dev",
+  "require": { }
+}

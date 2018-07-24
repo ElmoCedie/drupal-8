@@ -1,0 +1,76 @@
+/* line 2, ../sass/style.scss */
+#nav-logo {
+  padding-bottom: 13px;
+}
+
+/* line 6, ../sass/style.scss */
+#footer {
+  background-color: #2E3841;
+  color: #fff;
+  padding: 10px 0 40px;
+  border-top: 15px solid #F5A623;
+}
+
+/* line 13, ../sass/style.scss */
+.main-content {
+  width: 70px;
+  height: 300px;
+  border: 1px solid #c3c3c3;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -webkit-align-content: center;
+  align-content: center;
+}
+
+/* line 27, ../sass/style.scss */
+.navbar-custom ul li {
+  list-style: none;
+  display: inline-block;
+}
+/* line 32, ../sass/style.scss */
+.navbar-custom ul li a {
+  width: 150px;
+  line-height: 45px;
+  display: inline-block;
+  letter-spacing: .9px;
+  font-size: 14px;
+  color: #000;
+  transition: .3s;
+  text-align: center;
+}
+/* line 42, ../sass/style.scss */
+.navbar-custom ul li a:hover {
+  text-decoration: none;
+  color: #F5A623 !important;
+  transform: scale(1.1);
+}
+
+/* line 53, ../sass/style.scss */
+.navbar {
+  padding: 0.5rem 10rem;
+}
+
+/* line 59, ../sass/style.scss */
+.banner-image {
+  width: 100%;
+  height: 500px;
+}
+
+/* line 64, ../sass/style.scss */
+.banner-container {
+  margin-top: -17px;
+}
+
+/* line 69, ../sass/style.scss */
+.node__title a {
+  color: #000000 !important;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/* line 75, ../sass/style.scss */
+.node__meta {
+  color: #68696b;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}

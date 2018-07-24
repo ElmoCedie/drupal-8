@@ -1,0 +1,25 @@
+name: UnionBankTest
+description: UnionBank Test Theme
+type: theme
+package: Custom
+core: 8.x
+base theme: classy
+
+regions:
+  header: Header
+  highlighted: Highlighted
+  primary_menu: Primary Menu
+  sub_primary_menu: Sub Primary Menu
+  secondary_menu: Secondary Menu
+  sidebar_first: Primary Sidebar
+  sidebar_second: Secondary Sidebar
+  content_Navbar: Content Menu
+  content: Content
+  footer: Footer
+  help: help
+  breadcrumb: Breadcrumb
+
+
+libraries:
+  - UnionBankTest/global-css
+  - UnionBankTest/global-js

@@ -1,0 +1,13 @@
+Release 8.x-3.0 :
+
+* Fixed: #2862328 - Footer Credit link does not hide Text 'Theme for Drupal 8' credit.
+* Fixed: #2884744 - Undefined callback when saving theme settings.
+* Fixed: #2869893 - Node fields don't have css classes.
+* Fixed: #2851716 - Footer widget blocks only showing on front page.
+* Improved set of contextual classes for body.
+* Latest plugins used - bootstrap, smart menus, font-awesome.
+* Google font - exo2 - enriched with complete set of weights.
+
+Release 8.x-4.0 :
+* Fixed: #2957269 - Uncaught Error: Syntax error, unrecognized expression: #.
+* Main navigation menu toggle (+ and -) icons fixed.

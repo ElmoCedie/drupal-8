@@ -1,0 +1,204 @@
+<?php
+
+/**
+ * @file
+ * Contains Bootstrap Mint theme override and preprocess functions.
+ */
+
+use Drupal\Core\Form\FormStateInterface;
+
+/**
+ * Implements hook_preprocess_html().
+ */
+function bootstrap_mint_preprocess_html(&$variables) {
+  if ($node = \Drupal::request()->attributes->get('node')) {
+    $variables['attributes']['class'][] = 'page-node-' . $node->id();
+  }
+  
+  $current_path = \Drupal::service('path.current')->getPath();
+  $variables['current_path'] = \Drupal::service('path.alias_manager')->getAliasByPath($current_path);
+  
+  if (\Drupal::routeMatch()->getRouteName() == 'entity.taxonomy_term.canonical') {
+  $variables['term_id'] = \Drupal::routeMatch()->getRawParameter('taxonomy_term');
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ */
+function bootstrap_mint_preprocess_page(&$variables) {
+  // Bootstrap class for Sliding Header Widget.
+  $blocks_n_slide_widget = ((bool) $variables['page']['sliding_header_one'] + (bool) $variables['page']['sliding_header_two']);
+  switch ($blocks_n_slide_widget) {
+    case 1:
+      $variables['slidewidget_class'] = 'col-md-12';
+      $variables['slidewidget_first'] = 'col-md-12';
+      break;
+
+    case 2:
+      $variables['slidewidget_class'] = 'col-sm-4';
+      $variables['slidewidget_first'] = 'col-sm-8';
+  }
+
+  // Bootstrap class for Top Widget.
+  $blocks_n_top_widget = ((bool) $variables['page']['topwidget_left'] + (bool) $variables['page']['topwidget_middle'] + (bool) $variables['page']['topwidget_right']);
+  switch ($blocks_n_top_widget) {
+    case 1:
+      $variables['topwidget_class'] = 'col-md-12';
+      break;
+
+    case 2:
+      $variables['topwidget_class'] = 'col-sm-6';
+      break;
+
+    case 3:
+      $variables['topwidget_class'] = 'col-sm-4';
+  }
+
+  // Bootstrap class for Footer Widget.
+  $blocks_n_footer_top = ((bool) $variables['page']['footer_top_one'] + (bool) $variables['page']['footer_top_two'] + (bool) $variables['page']['footer_top_three'] + (bool) $variables['page']['footer_top_four']);
+  switch ($blocks_n_footer_top) {
+    case 1:
+      $variables['footer_top_class'] = 'col-md-12';
+      break;
+
+    case 2:
+      $variables['footer_top_class'] = 'col-sm-6';
+      break;
+
+    case 3:
+      $variables['footer_top_class'] = 'col-sm-4';
+      break;
+
+    case 4:
+      $variables['footer_top_class'] = 'col-sm-3';
+  }
+
+  // Add information about the number of sidebars.
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['contentlayout'] = 'col-md-6';
+    $variables['sidebarfirst'] = 'col-md-3';
+    $variables['sidebarsecond'] = 'col-md-3';
+  }
+  elseif (!empty($variables['page']['sidebar_first'])) {
+    $variables['contentlayout'] = 'col-md-9 ';
+    $variables['sidebarfirst'] = 'col-md-3';
+  }
+  elseif (!empty($variables['page']['sidebar_second'])) {
+    $variables['contentlayout'] = 'col-md-9';
+    $variables['sidebarsecond'] = 'col-md-3';
+  }
+  else {
+    $variables['contentlayout'] = 'col-md-12';
+  }
+
+  // Social media global variable.
+  $variables['show_social_icon'] = theme_get_setting('show_social_icon');
+  $variables['facebook_url'] = theme_get_setting('facebook_url');
+  $variables['google_plus_url'] = theme_get_setting('google_plus_url');
+  $variables['twitter_url'] = theme_get_setting('twitter_url');
+  $variables['linkedin_url'] = theme_get_setting('linkedin_url');
+  $variables['ytube_url'] = theme_get_setting('ytube_url');
+  $variables['show_credit_link'] = theme_get_setting('show_credit_link');
+}
+
+/**
+ * Implements hook_preprocess_menu().
+ */
+function bootstrap_mint_preprocess_menu(&$variables, $hook) {
+  if ($hook == 'menu__main') {
+    $current_path = \Drupal::request()->getRequestUri();
+    $items = $variables['items'];
+    foreach ($items as $key => $item) {
+      if ($item['url']->toString() == $current_path) {
+        $variables['items'][$key]['attributes']['class'] = 'active';
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_system_theme_settings_alter().
+ */
+function bootstrap_mint_form_system_theme_settings_alter(&$form, FormStateInterface $form_state) {
+  // Social Icon Link.
+  $form['bootstrap_mint_settings']['social_icon'] = array(
+    '#type' => 'details',
+    '#title' => t('Social Media Link'),
+    '#open' => FALSE,
+  );
+
+  $form['bootstrap_mint_settings']['social_icon']['show_social_icon'] = array(
+    '#type' => 'checkbox',
+    '#title' => t('Show Social Icons'),
+    '#default_value' => theme_get_setting('show_social_icon'),
+    '#description'   => t("Show/Hide social media links"),
+  );
+
+  $form['bootstrap_mint_settings']['social_icon']['facebook_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Facebook Link'),
+    '#default_value' => theme_get_setting('facebook_url'),
+  );
+
+  $form['bootstrap_mint_settings']['social_icon']['google_plus_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Google plus Link'),
+    '#default_value' => theme_get_setting('google_plus_url'),
+  );
+
+  $form['bootstrap_mint_settings']['social_icon']['twitter_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Twitter Link'),
+    '#default_value' => theme_get_setting('twitter_url'),
+  );
+
+  $form['bootstrap_mint_settings']['social_icon']['linkedin_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Linkedin Link'),
+    '#default_value' => theme_get_setting('linkedin_url'),
+  );
+
+  $form['bootstrap_mint_settings']['social_icon']['ytube_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('YouTube Link'),
+    '#default_value' => theme_get_setting('ytube_url'),
+  );
+
+  // Toggle show & hide credit.
+  $form['bootstrap_mint_settings']['credit_link'] = array(
+    '#type' => 'details',
+    '#title' => t('Footer Credit Link'),
+    '#open' => FALSE,
+  );
+
+  $form['bootstrap_mint_settings']['credit_link']['show_credit_link'] = array(
+    '#type' => 'checkbox',
+    '#title' => t("Show/Hide 'Theme for Drupal 8' credit"),
+    '#default_value' => theme_get_setting('show_credit_link'),
+  );
+
+}
+
+/**
+ * Implements hook_preprocess_breadcrumb().
+ */
+function bootstrap_mint_preprocess_breadcrumb(&$variables) {
+  if (($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb']) {
+    $variables['breadcrumb'][] = array(
+      'text' => $node->getTitle(),
+    );
+    // Cache context based on url.
+    $variables['#cache']['contexts'][] = 'url';
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter() for search_block_form().
+ */
+function bootstrap_mint_form_search_block_form_alter(&$form, &$form_state) {
+  $form['actions']['submit']['#value'] = '';
+  $form['actions']['submit']['#type'] = 'button';
+  $form['actions']['submit']['#markup'] = '<i class="fa fa-search"></i>';
+  $form['keys']['#attributes']['placeholder'] = t('Enter search terms...');
+}

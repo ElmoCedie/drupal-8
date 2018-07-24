@@ -1,0 +1,10 @@
+
+global-css:
+    css:
+      theme:
+        node_modules/bootstrap/dist/css/bootstrap.min.css: {}
+        css/style.css: {}
+
+global-js:
+    js:
+      node_modules/bootstrap/dist/js/bootstrap.min.js: {}
